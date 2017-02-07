@@ -1,6 +1,6 @@
 'use strict';
 var angular=require('angular');
-require('angular-route');
+var route=require('angular-route');
 var app=angular.module('bookmyshow',['ngRoute']);
 require('./controller');
 app.config(function($routeProvider,$locationProvider)
@@ -19,8 +19,8 @@ templateUrl:'views/admin.html',
  controller:'admincontroller'
 })
 $routeProvider.when('/adminlogin',{
-templateUrl:'views/adminlogin.html',
- controller:'adminlogincontroller'
+templateUrl:'views/adminlogin.html'
+ // controller:'adminlogincontroller'
 })
 
 $routeProvider.when('/booking',{

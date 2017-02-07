@@ -4,9 +4,9 @@ module.exports = function($scope, $http,$rootScope, $location)
   $location.path('/movie');
   };
 
-  $scope.addTheater =function(){
+  $scope.addTheatre =function(){
 
-  $location.path('/theater');
+  $location.path('/theatre');
   };
 
   $scope.addcity =function(){

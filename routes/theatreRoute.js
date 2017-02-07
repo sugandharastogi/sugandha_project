@@ -5,7 +5,7 @@ var router=express.Router();
 
 router.use(bodyParser.urlencoded({extended:true}));
 
-var db= mongoose.createConnection('mongodb://localhost:27017/movies');
+var db= mongoose.createConnection('mongodb://localhost:27017/moviebooking');
 
 db.on('error',console.error.bind(console,'connection error'));
 db.once('open',function()
@@ -13,37 +13,37 @@ db.once('open',function()
   console.log("Connected to DB");
 });
 
-var theaterschema = mongoose.Schema({
+var theatreschema = mongoose.Schema({
   name:String,
   city:String,
-  location:String
+ location:String
 });
 
-var theater=mongoose.model('theater',theaterschema,'theater');
+var theatre=mongoose.model('theatre',theatreschema,'theatre');
 
-router.get('/theater',function(req,res)
+router.get('/gettheatre',function(req,res)
 {
-  theater.find({},function(err,docs)
+  theatre.find({},function(err,docs)
 {
   res.json(docs);
 });
 });
 
-router.post('/addtheater',function(req,res){
-var th=new theater({
-    name:req.body.theatername,
-    city:req.body.theatercity,
-    location:req.body.theaterloc
+router.post('/addtheatre',function(req,res){
+var theatre=new theatre({
+    name:req.body.theatrename,
+    city:req.body.theatrecity,
+   location:req.body.theatreloc
   });
-  th.save(function(err, docs){
+  theatre.save(function(err, docs){
     if ( err ) throw err;
-    console.log("Theater Saved Successfully");
+    console.log("Theatre Saved Successfully");
   });
 });
 
-router.delete('/deletetheater/:id',function(req, res){
-  theater.remove({_id:req.params.id},function(err, docs){
-    console.log('Theater Removed Successfully');
+router.delete('/deletetheatre/:id',function(req, res){
+  theatre.remove({_id:req.params.id},function(err, docs){
+    console.log('Theatre Removed Successfully');
   });
 });
 

@@ -1,33 +1,63 @@
-module.exports=function($scope,$http)
+module.exports=function($scope,$http,$rootScope,$location)
 {
   $scope.message="hello world!";
-
   var init=function()
+{
+  $http.get('/api/theatre').then(function(response)
   {
-    //$http.get('http://www.omdbapi.com/?t=Dosti&y=&plot=short&r=json').success(function(response)
-    $http.get('/api/theater').success(function(response)
-  {
-    $scope.movieData=response;
-  });
-};
-
-init();
-
-$scope.addtheater=function() {
-  console.log($scope.theater);
-  $http.post('/api/addtheater',$scope.theater).success(function(response){
+  $scope.theatreData=response;
 });
-init();
-$scope.theater='';
+// init();
 };
+init();
 
-$scope.deleteTheater = function(theater){
-  var x=confirm("Are you sure you want to delete theater ?");
+// $scope.gettheatre=function()
+// {
+//   $http.get('http://www.omdbapi.com/?t='+$scope.theatrename+'&y='+$scope.year+'&plot=short&r=json').then(function(response)
+// {
+//   $scope.theatreDetails=response;
+// });
+// };
+
+ $scope.addtheatre=function()
+ {
+  $http.post('/theatreapi/addtheatre',$scope.theatreDetails).then(function(response){
+ });
+init();
+ };
+
+//  $scope.edittheatre=function()
+// {
+//    $http.post('/theatreapi/edittheatre',$scope.theatreDetails).then(function(response){
+//  });
+// init();
+//  };
+
+$scope.deletetheatre = function(theatre){
+  var x=confirm("Are you sure you want to delete this theatre ?");
   if(x){
-    $http.delete('/api/deletetheater/'+theater._id).success(function (response) {
+    $http.delete('/api/deletetheatre/'+theatre._id).then(function (response) {
   });
 }
   init();
 };
-
 }
+// $scope.readreview=function(title,poster)
+// {
+//   $rootScope.mtitle=title;
+//   $rootScope.mpos=poster;
+//   $location.path('/review');
+// }
+//
+// $scope.booktheatre=function(m,p,g)
+// {
+//   $rootScope.var=m;
+//   $rootScope.pos=p;
+//   $rootScope.genre=g;
+//   $location.path('/bookingproceed');
+// }
+//
+// $scope.adminpage=function()
+// {
+//   $location.path('/admin');
+// }

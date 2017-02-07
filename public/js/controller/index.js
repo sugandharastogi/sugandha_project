@@ -6,3 +6,4 @@ app.controller('adminlogincontroller',require('./adminlogincontroller'));
 app.controller('bookingcontroller',require('./bookingcontroller'));
 app.controller('cancellationcontroller',require('./cancellationcontroller'));
 app.controller('theatrecontroller',require('./theatrecontroller'));
+app.controller('citycontroller',require('./citycontroller'));

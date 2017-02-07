@@ -3,16 +3,15 @@
  var bodyParser=require('body-Parser');
  var router=express.Router();
  router.use(bodyParser.urlencoded({extended:true}));
- mongoose.connect('mongodb://localhost:27017/movies');
- var db=mongoose.connection;
+ 
+ var db= mongoose.createConnection('mongodb://localhost:27017/moviebooking');
  db.on('error',console.error.bind(console,'connection error'));
- db.open('open',function(){
+ db.once('open',function(){
    console.log("connected to db");
  });
 
  var movieSchema = mongoose.Schema({
    Title: String,
-   Language: String,
    Genre: String,
    Poster: String,
    Director: String,
@@ -31,17 +30,16 @@
      });
  });
 
- router.post('/insertMovie', function (req, res) {
+ router.post('/addMovie', function (req, res) {
     var movie=new movie({
         Title:req.body.Title,
         Genre:req.body.Genre,
         Actors:req.body.Actors,
-        language:req.body.Language,
         director:req.body.director,
         Poster:req.body.Poster,
         status:'false'
      });
-        moviv.save(function(err, docs){
+        movie.save(function(err, docs){
     if ( err ) throw err;
     console.log("Movie Added Successfully : "+docs);
   });
@@ -55,15 +53,14 @@ router.delete('/deletemovie/:id',function(req, res){
   });
 });
 
-router.put('/updateMovie/:moviename/:val',function(req,res){
-movie.findOneAndUpdate({ Title: req.params.moviename },
-  {
-    $set:{Status: req.params.val }
-},
-function (err, data){
-  res.json(data);
-});
-});
+// router.put('/updateMovie/:moviename/:val',function(req,res){
+// movie.findOneAndUpdate({ Title: req.params.moviename },
+//   {
+//     $set:{Status: req.params.val }
+// },
+// function (err, data){
+//   res.json(data);
+
 
 
 

@@ -3,14 +3,14 @@
 
 </div>
 <div class="col-md-10">
-<h3>addtheatre
+<h3>addCity
 <div style="float:right;"><a href="#/admin"><button type="button" class="btn btn-primary">Back</button></a></div>
 </h3><br>
 <table class="table">
   <thead>
     <tr>
       <th>
-        theatrename
+        Cityname
       </th>
       <!-- <th>
         Theater City
@@ -22,29 +22,27 @@
   </thead>
   <tbody>
     <tr>
-      <td><input ng-model="theatre.theatrename"></td>
+      <td><input ng-model="city.cityname"></td>
       <!-- <td><input ng-model="theater.theatercity"></td>
       <td><input ng-model="theater.theaterloc"></td> -->
     </tr>
     <tr>
-      <!-- <td><input ng-model="theater.theatercity"></td>
-      <td><input ng-model="theater.theaterloc"></td> -->
       <td>
-        <button class="btn btn-primary" ng-click="addtheatre()">Add theatre</button>
+        <button class="btn btn-primary" ng-click="addcity()">Add city</button>
       </td>
 
         <td>
-      <button class="btn btn-primary" ng-click="updatetheatre()">update theatre</button>
+      <button class="btn btn-primary" ng-click="updatecity()">update city</button>
     </td>
   </tr>
-  <tr nr-repeat="theatre in theatreData">
-   <!-- <td>{{theatre.theatrename}}</td> -->
+  <tr nr-repeat="city in cityData">
+   <!-- <td>{{theatre.theatrename}}</td>  -->
     <td>
-      <button class="btn btn-primary" ng-click="removetheatre()">remove theatre</button>
+      <button class="btn btn-primary" ng-click="removecity()">remove city</button>
     </td>
 
       <td>
-    <button class="btn btn-primary" ng-click="edittheatre()">edit theatre</button>
+    <button class="btn btn-primary" ng-click="editcity()">edit city</button>
     </td>
   </tr>
   </tbody>
